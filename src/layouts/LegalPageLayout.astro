@@ -1,0 +1,317 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+	title: string;
+	heading: string;
+	description?: string;
+	lastUpdated?: string;
+	subtitle?: string;
+}
+
+const { title, heading, description, lastUpdated, subtitle } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-navy-950/88 backdrop-blur-2xl border-b border-white/[0.06] transition-all duration-300">
+	<div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+		<div class="flex items-center justify-between h-16 sm:h-[4.5rem]">
+			<a href="/" class="flex items-center gap-2">
+				<img src="/images/logo.png" alt="Simbi" class="h-8 sm:h-9" />
+			</a>
+			<a href="/" class="text-[0.8125rem] font-display font-semibold text-white/50 hover:text-white/90 transition-colors duration-200 tracking-wide flex items-center gap-1.5">
+				<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+				Back to home
+			</a>
+		</div>
+	</div>
+</nav>
+
+<!-- Hero banner -->
+<div class="relative pt-16 sm:pt-[4.5rem] overflow-hidden">
+	<div class="absolute inset-0 bg-gradient-to-b from-navy-800/30 via-navy-950 to-navy-950"></div>
+	<div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-twilight/[0.06] rounded-full blur-[120px] pointer-events-none"></div>
+	<div class="absolute top-10 right-1/4 w-[300px] h-[300px] bg-golden/[0.04] rounded-full blur-[100px] pointer-events-none"></div>
+
+	<div class="relative max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-14 sm:pb-20">
+		{lastUpdated && (
+			<p class="text-white/30 text-xs sm:text-sm font-body tracking-wide mb-5 uppercase">Last updated: {lastUpdated}</p>
+		)}
+		<h1 class="font-display font-bold text-[2rem] sm:text-[2.5rem] lg:text-[3rem] leading-[1.15] tracking-tight">{heading}</h1>
+		{subtitle && (
+			<p class="mt-5 text-white/40 text-base sm:text-lg leading-relaxed max-w-xl">{subtitle}</p>
+		)}
+		<div class="mt-10 h-px bg-gradient-to-r from-white/10 via-white/5 to-transparent"></div>
+	</div>
+</div>
+
+<!-- Content -->
+<main class="relative pb-28 sm:pb-36">
+	<div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8">
+		<article class="legal-prose">
+			<slot />
+		</article>
+	</div>
+</main>
+
+<!-- Footer -->
+<footer class="relative border-t border-white/[0.07] py-12 sm:py-14">
+	<div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+		<div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+			<a href="/" class="block"><img src="/images/logo.png" alt="Simbi" class="h-8" /></a>
+
+			<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/40">
+				<a href="/privacy" class="hover:text-white/70 transition-colors">Privacy Policy</a>
+				<a href="/terms" class="hover:text-white/70 transition-colors">Terms of Service</a>
+				<a href="/support" class="hover:text-white/70 transition-colors">Support</a>
+				<a href="/privacy-choices" class="hover:text-white/70 transition-colors">Privacy Choices</a>
+			</div>
+
+			<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors">
+				<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+				App Store
+			</a>
+		</div>
+
+		<div class="mt-8 pt-8 border-t border-white/5 text-center">
+			<p class="text-sm text-white/25">&copy; {new Date().getFullYear()} Simbi. All rights reserved.</p>
+		</div>
+	</div>
+</footer>
+
+</Layout>
+
+<style is:global>
+	/* ── Section headings ── */
+	.legal-prose h2 {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 1.3rem;
+		line-height: 1.35;
+		margin-top: 3.25rem;
+		margin-bottom: 1rem;
+		padding-top: 2.25rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.06);
+		color: white;
+	}
+
+	.legal-prose h2:first-child {
+		margin-top: 0;
+		padding-top: 0;
+		border-top: none;
+	}
+
+	.legal-prose h3 {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 1.05rem;
+		line-height: 1.45;
+		margin-top: 2rem;
+		margin-bottom: 0.65rem;
+		color: rgba(255, 255, 255, 0.85);
+	}
+
+	/* ── Body text ── */
+	.legal-prose p {
+		color: rgba(255, 255, 255, 0.52);
+		line-height: 1.85;
+		margin-bottom: 1.15rem;
+		font-size: 0.9375rem;
+		max-width: 65ch;
+	}
+
+	.legal-prose > p:first-child {
+		font-size: 1rem;
+		color: rgba(255, 255, 255, 0.55);
+		line-height: 1.85;
+		margin-bottom: 1.5rem;
+	}
+
+	/* ── Lists ── */
+	.legal-prose ul,
+	.legal-prose ol {
+		color: rgba(255, 255, 255, 0.52);
+		line-height: 1.8;
+		margin-top: 0.5rem;
+		margin-bottom: 1.5rem;
+		padding-left: 0;
+		list-style: none;
+	}
+
+	.legal-prose ol {
+		counter-reset: legal-ol;
+	}
+
+	.legal-prose ul > li,
+	.legal-prose ol > li {
+		position: relative;
+		padding-left: 1.625rem;
+		margin-bottom: 0.5rem;
+		font-size: 0.9375rem;
+		line-height: 1.75;
+	}
+
+	.legal-prose ul > li::before {
+		content: "";
+		position: absolute;
+		left: 0.125rem;
+		top: 0.65em;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: var(--color-golden);
+		opacity: 0.4;
+	}
+
+	.legal-prose ol > li {
+		counter-increment: legal-ol;
+	}
+
+	.legal-prose ol > li::before {
+		content: counter(legal-ol) ".";
+		position: absolute;
+		left: 0;
+		color: var(--color-golden);
+		opacity: 0.55;
+		font-weight: 600;
+		font-size: 0.875rem;
+		font-family: var(--font-display);
+	}
+
+	/* ── Links ── */
+	.legal-prose a {
+		color: var(--color-golden);
+		text-decoration: none;
+		border-bottom: 1px solid rgba(245, 166, 35, 0.2);
+		padding-bottom: 1px;
+		transition: color 0.15s, border-color 0.15s;
+	}
+
+	.legal-prose a:hover {
+		color: var(--color-golden-light);
+		border-bottom-color: var(--color-golden-light);
+	}
+
+	.legal-prose strong {
+		color: rgba(255, 255, 255, 0.75);
+		font-weight: 600;
+	}
+
+	/* ── Contact / address blocks ── */
+	.legal-prose .contact-block {
+		background: rgba(255, 255, 255, 0.025);
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		border-radius: 0.75rem;
+		padding: 1.15rem 1.35rem;
+		margin-top: 0.5rem;
+		margin-bottom: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+	}
+
+	.legal-prose .contact-block span {
+		color: rgba(255, 255, 255, 0.52);
+		font-size: 0.9375rem;
+		line-height: 1.6;
+	}
+
+	.legal-prose .contact-block .contact-name {
+		color: rgba(255, 255, 255, 0.75);
+		font-weight: 600;
+		font-family: var(--font-display);
+		font-size: 0.975rem;
+	}
+
+	/* ── Responsive ── */
+	@media (min-width: 640px) {
+		.legal-prose h2 {
+			font-size: 1.45rem;
+		}
+
+		.legal-prose p {
+			font-size: 1rem;
+		}
+
+		.legal-prose > p:first-child {
+			font-size: 1.0625rem;
+		}
+
+		.legal-prose ul > li,
+		.legal-prose ol > li {
+			font-size: 1rem;
+		}
+
+		.legal-prose .contact-block span {
+			font-size: 1rem;
+		}
+	}
+
+	/* ── Support page card grid ── */
+	.legal-prose .support-cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.875rem;
+		margin-top: 0.5rem;
+		margin-bottom: 2rem;
+	}
+
+	@media (min-width: 640px) {
+		.legal-prose .support-cards {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.legal-prose .support-card {
+		background: rgba(255, 255, 255, 0.025);
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		border-radius: 0.875rem;
+		padding: 1.25rem 1.5rem;
+		transition: border-color 0.2s, background 0.2s;
+	}
+
+	.legal-prose .support-card:hover {
+		border-color: rgba(255, 255, 255, 0.1);
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	.legal-prose .support-card .card-label {
+		display: block;
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 0.8125rem;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: rgba(255, 255, 255, 0.3);
+		margin-bottom: 0.4rem;
+	}
+
+	.legal-prose .support-card .card-value {
+		display: block;
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 0.9375rem;
+		line-height: 1.55;
+	}
+
+	/* ── Contact highlight card ── */
+	.legal-prose .contact-highlight {
+		background: linear-gradient(135deg, rgba(245, 166, 35, 0.06) 0%, rgba(74, 111, 165, 0.06) 100%);
+		border: 1px solid rgba(245, 166, 35, 0.12);
+		border-radius: 1rem;
+		padding: 1.5rem 1.75rem;
+		margin-bottom: 2rem;
+	}
+
+	.legal-prose .contact-highlight p {
+		margin-bottom: 0;
+		max-width: none;
+	}
+
+	.legal-prose .contact-highlight a {
+		font-size: 1.1rem;
+		font-weight: 600;
+		font-family: var(--font-display);
+	}
+</style>
