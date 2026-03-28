@@ -1,53 +1,611 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const faqs = [
+	{
+		q: "What is Simbi?",
+		a: "Simbi is a bedtime story app where your child is the hero. You create a character that looks like them, choose a story world and a companion, and Simbi creates a fresh personalised adventure every night.",
+	},
+	{
+		q: "How does personalisation work?",
+		a: "You design your child's character — choosing their hair, eyes, skin tone, and pyjamas. Then you pick a story world and a helper companion. Every story weaves these choices together so the adventure truly feels like theirs.",
+	},
+	{
+		q: "What age is Simbi designed for?",
+		a: "Simbi is designed for children aged 2–12. Stories adapt to your child's age, so younger children get simpler, gentler tales while older children enjoy more detailed adventures.",
+	},
+	{
+		q: "Do I need to create the stories myself?",
+		a: "No. Once you've set up your child's character and preferences, Simbi handles the rest. A brand new story is ready every night — no prep needed from you.",
+	},
+	{
+		q: "Is Simbi available on iPhone and iPad?",
+		a: "Yes. Simbi is available on the App Store for both iPhone and iPad.",
+	},
+	{
+		q: "Does Simbi require a subscription?",
+		a: "Simbi offers a free tier so you can try it out. For the full experience — including unlimited stories and access to all worlds — there are affordable subscription options.",
+	},
+	{
+		q: "Can I try it before subscribing?",
+		a: "Absolutely. Download Simbi and start creating your child's bedtime world straight away. Try it, see the magic, and upgrade when you're ready.",
+	},
+];
+
+const helpers = [
+	{ name: "Biscuit", img: "/images/helpers/puppy.png", trait: "Loyal & playful" },
+	{ name: "Whiskers", img: "/images/helpers/kitty.png", trait: "Curious & gentle" },
+	{ name: "Hoot", img: "/images/helpers/owl.png", trait: "Wise & calm" },
+	{ name: "Splash", img: "/images/helpers/dolphin.png", trait: "Brave & kind" },
+	{ name: "Twinkle", img: "/images/helpers/fairy.png", trait: "Magical & caring" },
+	{ name: "Ember", img: "/images/helpers/dragon.png", trait: "Friendly & fearless" },
+];
+
+const themes = [
+	{ name: "Fairy Tales", img: "/images/themes/fairy-tales.png" },
+	{ name: "Friendly Dragons", img: "/images/themes/dragons.png" },
+	{ name: "Ocean Adventures", img: "/images/themes/ocean.png" },
+	{ name: "Dinosaurs", img: "/images/themes/dinosaurs.png" },
+	{ name: "Space Explorers", img: "/images/themes/space.png" },
+	{ name: "Pirates", img: "/images/themes/pirates.png" },
+];
 ---
 
-<Layout title="Simbi" description="Simbi - Coming Soon">
-	<main>
-		<div class="container">
-			<h1>Simbi</h1>
-			<p class="tagline">Coming Soon</p>
+<Layout title="Simbi — Bedtime Stories Where Your Child is the Hero">
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-navy-950/50 backdrop-blur-md">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex items-center justify-between h-16 sm:h-[4.5rem]">
+			<a href="#" class="flex items-center gap-2">
+				<img src="/images/logo.png" alt="Simbi" class="h-8 sm:h-9" />
+			</a>
+			<div class="hidden md:flex items-center gap-10">
+				<a href="#how-it-works" class="text-[0.8125rem] font-display font-medium text-white/65 hover:text-white transition-colors duration-200 tracking-wide">How It Works</a>
+				<a href="#app" class="text-[0.8125rem] font-display font-medium text-white/65 hover:text-white transition-colors duration-200 tracking-wide">The App</a>
+				<a href="#faq" class="text-[0.8125rem] font-display font-medium text-white/65 hover:text-white transition-colors duration-200 tracking-wide">FAQ</a>
+			</div>
+			<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-white/[0.08] hover:bg-white/[0.14] border border-white/[0.08] text-white/90 hover:text-white font-display font-semibold text-[0.8125rem] px-5 py-2 rounded-full transition-all duration-200 backdrop-blur-sm">
+				<svg class="w-[14px] h-[14px]" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+				Download Free
+			</a>
+			<button id="mobile-menu-btn" class="md:hidden p-2 text-white/65 hover:text-white transition-colors" aria-label="Menu">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+			</button>
 		</div>
-	</main>
+	</div>
+	<div id="mobile-menu" class="md:hidden hidden bg-navy-950/95 backdrop-blur-2xl border-t border-white/[0.06]">
+		<div class="px-5 py-5 space-y-1">
+			<a href="#how-it-works" class="block text-white/70 hover:text-white py-2.5 font-display font-medium text-[0.9rem] transition-colors">How It Works</a>
+			<a href="#app" class="block text-white/70 hover:text-white py-2.5 font-display font-medium text-[0.9rem] transition-colors">The App</a>
+			<a href="#faq" class="block text-white/70 hover:text-white py-2.5 font-display font-medium text-[0.9rem] transition-colors">FAQ</a>
+			<div class="pt-3">
+				<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-golden text-navy-950 font-display font-semibold text-sm px-5 py-2.5 rounded-full">
+					<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+					Download Free
+				</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="relative min-h-[90vh] sm:min-h-screen flex items-center overflow-hidden pt-20 pb-12">
+	<div class="absolute inset-0">
+		<img src="/images/main-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover object-top sm:hidden" />
+		<img src="/images/newer-bg-image.jpg" alt="" class="absolute inset-0 w-full h-full object-cover object-[center_35%] hidden sm:block" />
+		<div class="absolute inset-0 bg-gradient-to-b from-navy-950/20 via-navy-950/5 to-navy-950 lg:from-navy-950/10 lg:via-transparent lg:to-navy-950"></div>
+	</div>
+
+	<div class="stars-container absolute inset-0 pointer-events-none"></div>
+
+	<!-- Readability: light vignette on small screens only (desktop: full artwork visible on the right) -->
+	<div class="pointer-events-none absolute inset-0 z-[1] lg:hidden bg-[radial-gradient(ellipse_100%_80%_at_50%_38%,rgba(7,13,26,0.48)_0%,rgba(7,13,26,0.18)_55%,transparent_78%)]" aria-hidden="true"></div>
+
+	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+		<div class="max-w-xl sm:max-w-2xl lg:max-w-[42rem] text-center lg:text-left mx-auto lg:mx-0">
+			<div class="relative rounded-2xl sm:rounded-[1.6rem] border-l border-t border-b border-white/[0.05] border-r-0 shadow-[0_4px_36px_-12px_rgba(0,0,0,0.3)] px-5 py-7 sm:px-7 sm:py-8 lg:px-8 lg:py-9">
+				<div class="hero-glass-blur hero-glass-fade-right pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[inherit]" aria-hidden="true"></div>
+				<div class="hero-glass-tint hero-glass-fade-right pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[inherit]" aria-hidden="true"></div>
+				<div class="relative z-10">
+					<div class="space-y-4 sm:space-y-5 mb-7 sm:mb-8">
+						<p class="animate-fade-in-up font-body text-sm sm:text-base font-medium text-white/85 tracking-[0.03em] flex justify-center lg:justify-start lg:border-l-2 lg:border-golden/45 lg:pl-3.5">
+							Simbi: Bedtime Stories
+						</p>
+
+						<h1 class="font-display font-bold text-[2rem] sm:text-[2.65rem] lg:text-[2.85rem] xl:text-[3.15rem] leading-[1.1] sm:leading-[1.08] animate-fade-in-up animation-delay-200 [text-shadow:0_2px_24px_rgba(7,13,26,0.85),0_1px_3px_rgba(7,13,26,0.9)]">
+							Every Night, A Story
+							<br />Made <span class="text-golden drop-shadow-[0_2px_16px_rgba(7,13,26,0.9)]">Just for Them</span>
+						</h1>
+
+						<p class="text-[0.95rem] sm:text-lg text-white/85 max-w-lg mx-auto lg:mx-0 leading-[1.6] sm:leading-relaxed animate-fade-in-up animation-delay-400 [text-shadow:0_1px_14px_rgba(7,13,26,0.75)]">
+							Your child becomes the hero of their own bedtime adventure. Create their character, pick a world and a companion, and discover a fresh story together every night.
+						</p>
+					</div>
+
+					<div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 justify-center lg:justify-start animate-fade-in-up animation-delay-600">
+						<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-golden hover:bg-golden-dark text-navy-950 font-display font-bold text-base sm:text-lg px-7 py-3.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(245,166,35,0.3)]">
+							<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+							Download Free
+						</a>
+						<a href="#how-it-works" class="flex items-center gap-2 text-white/65 hover:text-white font-display font-medium text-[0.9rem] transition-colors group">
+							See how it works
+							<svg class="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-navy-950 to-transparent pointer-events-none"></div>
+</section>
+
+<!-- ═══════════════════ HOW IT WORKS ═══════════════════ -->
+<section id="how-it-works" class="relative py-20 sm:py-28">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-14 sm:mb-16" data-reveal>
+			<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">How it works</p>
+			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">Bedtime in four simple steps</h2>
+		</div>
+
+		<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6" data-reveal="80ms">
+			<div class="relative bg-white/[0.04] border border-white/[0.07] rounded-2xl p-6 text-center group hover:bg-white/[0.06] transition-colors">
+				<span class="inline-block text-golden/50 font-display font-bold text-xs tracking-widest uppercase mb-4">Step 1</span>
+				<h3 class="font-display font-bold text-lg mb-2">Build their character</h3>
+				<p class="text-white/50 text-sm leading-relaxed">Create a mini-me that looks just like your child — their hair, eyes, skin tone, and favourite pyjamas.</p>
+			</div>
+			<div class="relative bg-white/[0.04] border border-white/[0.07] rounded-2xl p-6 text-center group hover:bg-white/[0.06] transition-colors">
+				<span class="inline-block text-golden/50 font-display font-bold text-xs tracking-widest uppercase mb-4">Step 2</span>
+				<h3 class="font-display font-bold text-lg mb-2">Pick a story world</h3>
+				<p class="text-white/50 text-sm leading-relaxed">Fairy tales, dragons, pirates, outer space — your child chooses where tonight's adventure takes them.</p>
+			</div>
+			<div class="relative bg-white/[0.04] border border-white/[0.07] rounded-2xl p-6 text-center group hover:bg-white/[0.06] transition-colors">
+				<span class="inline-block text-golden/50 font-display font-bold text-xs tracking-widest uppercase mb-4">Step 3</span>
+				<h3 class="font-display font-bold text-lg mb-2">Choose a companion</h3>
+				<p class="text-white/50 text-sm leading-relaxed">A loyal puppy, a wise owl, a friendly dragon — every hero needs a helper by their side.</p>
+			</div>
+			<div class="relative bg-white/[0.04] border border-white/[0.07] rounded-2xl p-6 text-center group hover:bg-white/[0.06] transition-colors">
+				<span class="inline-block text-golden/50 font-display font-bold text-xs tracking-widest uppercase mb-4">Step 4</span>
+				<h3 class="font-display font-bold text-lg mb-2">A new story every night</h3>
+				<p class="text-white/50 text-sm leading-relaxed">A fresh personalised adventure is waiting at bedtime. Read together, or let the narration do the work.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══════════════════ APP SHOWCASE ═══════════════════ -->
+<section id="app" class="relative py-20 sm:py-28 overflow-hidden">
+	<div class="absolute inset-0 bg-gradient-to-b from-transparent via-navy-800/25 to-transparent"></div>
+	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-14 sm:mb-16" data-reveal>
+			<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Inside the app</p>
+			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-4">See the Magic for Yourself</h2>
+			<p class="text-white/55 text-lg max-w-xl mx-auto">From building their character to reading tonight's story — this is what bedtime looks like with Simbi.</p>
+		</div>
+
+		<div class="relative" data-reveal="100ms">
+			<div class="flex gap-4 sm:gap-5 lg:gap-6 justify-center items-end overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-4 sm:px-0">
+				<div class="snap-center shrink-0 w-[200px] sm:w-[220px] lg:w-[240px]">
+					<div class="relative rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-950/50 ring-1 ring-white/10 mb-3">
+						<img src="/images/screenshots/welcome.png" alt="Welcome screen" class="w-full" loading="lazy" />
+					</div>
+					<p class="font-display font-semibold text-xs sm:text-sm text-white/50 text-center">Welcome</p>
+				</div>
+				<div class="snap-center shrink-0 w-[200px] sm:w-[220px] lg:w-[240px] -translate-y-4">
+					<div class="relative rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-950/50 ring-1 ring-white/10 mb-3">
+						<img src="/images/screenshots/character.png" alt="Character creation" class="w-full" loading="lazy" />
+					</div>
+					<p class="font-display font-semibold text-xs sm:text-sm text-white/50 text-center">Build their character</p>
+				</div>
+				<div class="snap-center shrink-0 w-[220px] sm:w-[250px] lg:w-[280px] z-10">
+					<div class="relative rounded-[1.8rem] sm:rounded-[2.2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] ring-2 ring-golden/20 mb-3">
+						<img src="/images/screenshots/home.png" alt="Tonight's story" class="w-full" loading="lazy" />
+					</div>
+					<p class="font-display font-bold text-sm text-golden text-center">Tonight's adventure</p>
+				</div>
+				<div class="snap-center shrink-0 w-[200px] sm:w-[220px] lg:w-[240px] -translate-y-4">
+					<div class="relative rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-950/50 ring-1 ring-white/10 mb-3">
+						<img src="/images/screenshots/theme.png" alt="Theme selection" class="w-full" loading="lazy" />
+					</div>
+					<p class="font-display font-semibold text-xs sm:text-sm text-white/50 text-center">Choose a world</p>
+				</div>
+				<div class="snap-center shrink-0 w-[200px] sm:w-[220px] lg:w-[240px]">
+					<div class="relative rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-950/50 ring-1 ring-white/10 mb-3">
+						<img src="/images/screenshots/story.png" alt="Story reading" class="w-full" loading="lazy" />
+					</div>
+					<p class="font-display font-semibold text-xs sm:text-sm text-white/50 text-center">Story time</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══════════════════ THEIR WORLD ═══════════════════ -->
+<section class="relative py-20 sm:py-28">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+		<!-- Worlds -->
+		<div class="mb-24 sm:mb-32">
+			<div class="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-center">
+				<div class="lg:col-span-4 mb-10 lg:mb-0" data-reveal>
+					<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Story worlds</p>
+					<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[2.5rem] leading-tight mb-4">Where Will Tonight's Adventure Take Them?</h2>
+					<p class="text-white/55 leading-relaxed">Your child picks the world — and every story is set inside it. Enchanted forests, pirate islands, the depths of the ocean. Each one illustrated with rich, immersive artwork.</p>
+				</div>
+				<div class="lg:col-span-8" data-reveal="100ms">
+					<div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4">
+						{themes.map((theme) => (
+							<div class="group cursor-default">
+								<div class="relative aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden ring-1 ring-white/10 group-hover:ring-golden/30 transition-all duration-300">
+									<img src={theme.img} alt={theme.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+									<div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent"></div>
+									<p class="absolute bottom-2.5 left-3 right-3 font-display font-semibold text-sm text-white/90 drop-shadow-lg">{theme.name}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Helpers -->
+		<div>
+			<div class="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-center">
+				<div class="lg:col-span-8 lg:order-1 order-2" data-reveal="100ms">
+					<div class="grid grid-cols-3 sm:grid-cols-6 gap-6 sm:gap-8">
+						{helpers.map((helper) => (
+							<div class="group text-center">
+								<div class="relative mb-2">
+									<div class="absolute -inset-3 bg-golden/0 group-hover:bg-golden/8 rounded-full blur-xl transition-all duration-500"></div>
+									<img src={helper.img} alt={helper.name} class="relative w-full aspect-square object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-lg" loading="lazy" />
+								</div>
+								<p class="font-display font-bold text-sm text-white/80 group-hover:text-golden transition-colors">{helper.name}</p>
+								<p class="text-white/40 text-xs mt-0.5">{helper.trait}</p>
+							</div>
+						))}
+					</div>
+				</div>
+				<div class="lg:col-span-4 lg:order-2 order-1 mb-10 lg:mb-0" data-reveal>
+					<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Companion characters</p>
+					<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[2.5rem] leading-tight mb-4">Every Hero Needs a Friend</h2>
+					<p class="text-white/55 leading-relaxed">Your child picks a companion who joins them on every adventure. Each helper has its own personality — and becomes a familiar, comforting presence in the story.</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<!-- ═══════════════════ WHY SIMBI ═══════════════════ -->
+<section class="relative py-20 sm:py-28">
+	<div class="absolute inset-0 bg-gradient-to-b from-transparent via-navy-800/20 to-transparent"></div>
+	<div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-14 sm:mb-16" data-reveal>
+			<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Why families love it</p>
+			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">Bedtime, Reimagined</h2>
+		</div>
+
+		<div class="grid sm:grid-cols-2 gap-5" data-reveal="80ms">
+			<div class="flex gap-4 items-start p-6 rounded-2xl bg-white/[0.04] border border-white/[0.07]">
+				<div class="shrink-0 w-10 h-10 rounded-xl bg-golden/15 flex items-center justify-center mt-0.5">
+					<svg class="w-5 h-5 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+				</div>
+				<div>
+					<h3 class="font-display font-bold text-lg mb-1">They're the hero, not just the audience</h3>
+					<p class="text-white/50 text-sm leading-relaxed">Your child doesn't just hear a story — they're in it. Their character, their world, their companion. It feels like theirs because it is.</p>
+				</div>
+			</div>
+
+			<div class="flex gap-4 items-start p-6 rounded-2xl bg-white/[0.04] border border-white/[0.07]">
+				<div class="shrink-0 w-10 h-10 rounded-xl bg-golden/15 flex items-center justify-center mt-0.5">
+					<svg class="w-5 h-5 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+				</div>
+				<div>
+					<h3 class="font-display font-bold text-lg mb-1">Bedtime becomes something they want</h3>
+					<p class="text-white/50 text-sm leading-relaxed">Instead of negotiations, there's anticipation. Children look forward to bedtime when a new adventure is waiting for them.</p>
+				</div>
+			</div>
+
+			<div class="flex gap-4 items-start p-6 rounded-2xl bg-white/[0.04] border border-white/[0.07]">
+				<div class="shrink-0 w-10 h-10 rounded-xl bg-golden/15 flex items-center justify-center mt-0.5">
+					<svg class="w-5 h-5 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
+				</div>
+				<div>
+					<h3 class="font-display font-bold text-lg mb-1">A fresh story every single night</h3>
+					<p class="text-white/50 text-sm leading-relaxed">No repeats, no re-reads. Simbi creates a brand new personalised adventure every evening, so the wonder never gets old.</p>
+				</div>
+			</div>
+
+			<div class="flex gap-4 items-start p-6 rounded-2xl bg-white/[0.04] border border-white/[0.07]">
+				<div class="shrink-0 w-10 h-10 rounded-xl bg-golden/15 flex items-center justify-center mt-0.5">
+					<svg class="w-5 h-5 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+				</div>
+				<div>
+					<h3 class="font-display font-bold text-lg mb-1">Zero effort for parents</h3>
+					<p class="text-white/50 text-sm leading-relaxed">Set it up once. After that, a new story is ready every night — no prep, no planning, no running out of ideas at 7pm.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section id="faq" class="relative py-20 sm:py-28">
+	<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-14" data-reveal>
+			<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Questions</p>
+			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">Frequently Asked</h2>
+		</div>
+
+		<div class="space-y-3" data-reveal="80ms">
+			{faqs.map((faq, i) => (
+				<details class="group faq-item bg-white/[0.04] border border-white/[0.07] rounded-2xl overflow-hidden" open={i === 0}>
+					<summary class="flex items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer list-none font-display font-semibold text-lg select-none">
+						<span>{faq.q}</span>
+						<svg class="w-5 h-5 shrink-0 text-golden/60 transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+					</summary>
+					<div class="px-5 sm:px-6 pb-5 sm:pb-6 -mt-1">
+						<p class="text-white/55 leading-relaxed">{faq.a}</p>
+					</div>
+				</details>
+			))}
+		</div>
+	</div>
+</section>
+
+<!-- ═══════════════════ TRUST / PRIVACY ═══════════════════ -->
+<section class="relative py-20 sm:py-28">
+	<div class="absolute inset-0 bg-gradient-to-b from-transparent via-navy-800/15 to-transparent"></div>
+	<div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="bg-white/[0.04] border border-white/[0.07] rounded-3xl p-8 sm:p-12 text-center" data-reveal>
+			<div class="w-14 h-14 rounded-2xl bg-golden/15 flex items-center justify-center mx-auto mb-6">
+				<svg class="w-7 h-7 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+			</div>
+			<h2 class="font-display font-bold text-2xl sm:text-3xl mb-4">A Safe Place for Bedtime Stories</h2>
+			<p class="text-white/55 leading-relaxed max-w-xl mx-auto mb-8">
+				Simbi is a children's app, and we treat that responsibility seriously. There are no ads, no in-app purchases inside the experience, and no social features. Stories are designed to be gentle, age-appropriate, and calming.
+			</p>
+			<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/45">
+				<div class="flex items-center gap-2">
+					<svg class="w-4 h-4 text-golden/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+					No ads
+				</div>
+				<div class="flex items-center gap-2">
+					<svg class="w-4 h-4 text-golden/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+					No social features
+				</div>
+				<div class="flex items-center gap-2">
+					<svg class="w-4 h-4 text-golden/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+					Age-appropriate content
+				</div>
+				<div class="flex items-center gap-2">
+					<svg class="w-4 h-4 text-golden/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+					Designed for calm
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ═══════════════════ FINAL CTA ═══════════════════ -->
+<section class="relative py-24 sm:py-32 overflow-hidden">
+	<div class="absolute inset-0">
+		<img src="/images/main-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25 sm:hidden" />
+		<img src="/images/desktop-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25 hidden sm:block" />
+		<div class="absolute inset-0 bg-gradient-to-b from-navy-950 via-navy-950/80 to-navy-950"></div>
+	</div>
+	<div class="stars-container absolute inset-0 pointer-events-none opacity-60"></div>
+
+	<div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-reveal>
+		<img src="/images/hero-art.png" alt="" class="w-28 sm:w-36 mx-auto mb-8 drop-shadow-xl hero-float" />
+
+		<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-4">Their Story Starts Tonight</h2>
+		<p class="text-white/60 text-lg sm:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
+			Create their character. Choose their world. Meet their companion. A magical bedtime adventure is waiting.
+		</p>
+
+		<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-golden hover:bg-golden-dark text-navy-950 font-display font-bold text-lg px-10 py-5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(245,166,35,0.25)]">
+			<svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+			Download Free on the App Store
+		</a>
+		<p class="text-white/35 text-sm mt-4">Available on iPhone and iPad</p>
+	</div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="relative border-t border-white/[0.07] py-12 sm:py-14">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+			<img src="/images/logo.png" alt="Simbi" class="h-8" />
+
+			<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/40">
+				<a href="/privacy" class="hover:text-white/70 transition-colors">Privacy Policy</a>
+				<a href="/terms" class="hover:text-white/70 transition-colors">Terms of Use</a>
+				<a href="mailto:support@simbiapp.com" class="hover:text-white/70 transition-colors">Support</a>
+			</div>
+
+			<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors">
+				<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+				App Store
+			</a>
+		</div>
+
+		<div class="mt-8 pt-8 border-t border-white/5 text-center">
+			<p class="text-sm text-white/25">&copy; {new Date().getFullYear()} Simbi. All rights reserved.</p>
+		</div>
+	</div>
+</footer>
+
 </Layout>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		padding: 0;
-		height: 100%;
-		font-family:
-			-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-			Arial, sans-serif;
-		background: #000;
-		color: #fff;
+	@keyframes fade-in {
+		from { opacity: 0; }
+		to { opacity: 1; }
 	}
 
-	main {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 100vh;
-		min-height: 100dvh;
+	@keyframes fade-in-up {
+		from { opacity: 0; transform: translateY(20px); }
+		to { opacity: 1; transform: translateY(0); }
 	}
 
-	.container {
-		text-align: center;
-		padding: 2rem;
+	@keyframes gentle-float {
+		0%, 100% { transform: translateY(0px); }
+		50% { transform: translateY(-10px); }
 	}
 
-	h1 {
-		font-size: clamp(3rem, 10vw, 6rem);
-		font-weight: 700;
-		letter-spacing: -0.02em;
-		margin: 0 0 0.25em;
+	.animate-fade-in {
+		animation: fade-in 0.8s ease-out both;
 	}
 
-	.tagline {
-		font-size: clamp(1rem, 3vw, 1.5rem);
-		font-weight: 300;
-		opacity: 0.6;
-		margin: 0;
+	.animate-fade-in-up {
+		animation: fade-in-up 0.8s ease-out both;
+	}
+
+	.animation-delay-200 {
+		animation-delay: 200ms;
+	}
+
+	.animation-delay-400 {
+		animation-delay: 400ms;
+	}
+
+	.animation-delay-600 {
+		animation-delay: 600ms;
+	}
+
+	.hero-float {
+		animation: gentle-float 6s ease-in-out infinite;
+	}
+
+	.faq-item summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.nav-scrolled {
+		background: rgba(7, 13, 26, 0.92);
+		backdrop-filter: blur(24px) saturate(1.1);
+		-webkit-backdrop-filter: blur(24px) saturate(1.1);
+		box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 4px 24px rgba(7, 13, 26, 0.45);
+	}
+
+	.reveal {
+		opacity: 0;
+		transform: translateY(24px);
+		transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.reveal.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Hero copy panel: frosted fill fades out on the right (text stays sharp above) */
+	.hero-glass-fade-right {
+		-webkit-mask-image: linear-gradient(
+			to right,
+			#000 0%,
+			#000 26%,
+			rgba(0, 0, 0, 0.55) 36%,
+			rgba(0, 0, 0, 0.18) 44%,
+			transparent 50%,
+			transparent 100%
+		);
+		mask-image: linear-gradient(
+			to right,
+			#000 0%,
+			#000 26%,
+			rgba(0, 0, 0, 0.55) 36%,
+			rgba(0, 0, 0, 0.18) 44%,
+			transparent 50%,
+			transparent 100%
+		);
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+		mask-mode: alpha;
+		transform: translateZ(0);
+	}
+
+	.hero-glass-blur {
+		background: rgba(7, 13, 26, 0.14);
+		backdrop-filter: blur(14px) saturate(1.05);
+		-webkit-backdrop-filter: blur(14px) saturate(1.05);
+	}
+
+	@media (min-width: 1024px) {
+		.hero-glass-blur {
+			background: rgba(7, 13, 26, 0.09);
+			backdrop-filter: blur(10px) saturate(1.02);
+			-webkit-backdrop-filter: blur(10px) saturate(1.02);
+		}
+	}
+
+	.hero-glass-tint {
+		background: linear-gradient(
+			135deg,
+			rgba(245, 166, 35, 0.07) 0%,
+			transparent 50%
+		);
+	}
+
+	.stars-container {
+		background-image:
+			radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+			radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+			radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+			radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.35) 0%, transparent 100%),
+			radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
+			radial-gradient(1.5px 1.5px at 15% 85%, rgba(255,255,255,0.45) 0%, transparent 100%),
+			radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.35) 0%, transparent 100%),
+			radial-gradient(1px 1px at 45% 75%, rgba(255,255,255,0.3) 0%, transparent 100%);
+	}
+
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
 	}
 </style>
+
+<script>
+	const navbar = document.getElementById('navbar');
+	const onScroll = () => {
+		if (!navbar) return;
+		navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+	};
+	window.addEventListener('scroll', onScroll, { passive: true });
+	onScroll();
+
+	const menuBtn = document.getElementById('mobile-menu-btn');
+	const mobileMenu = document.getElementById('mobile-menu');
+	menuBtn?.addEventListener('click', () => {
+		mobileMenu?.classList.toggle('hidden');
+	});
+
+	mobileMenu?.querySelectorAll('a').forEach(link => {
+		link.addEventListener('click', () => {
+			mobileMenu?.classList.add('hidden');
+		});
+	});
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+				observer.unobserve(entry.target);
+			}
+		});
+	}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+	document.querySelectorAll('[data-reveal]').forEach((el) => {
+		el.classList.add('reveal');
+		const delay = el.dataset.reveal;
+		if (delay) el.style.transitionDelay = delay;
+		observer.observe(el);
+	});
+</script>
