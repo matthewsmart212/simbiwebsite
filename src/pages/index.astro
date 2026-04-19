@@ -4,31 +4,63 @@ import Layout from "../layouts/Layout.astro";
 const faqs = [
 	{
 		q: "What is Simbi?",
-		a: "Simbi is a bedtime story app where your child is the hero. You create a character that looks like them, choose a story world and a companion, and Simbi creates a fresh personalised adventure every night.",
+		a: "Simbi is a personalised bedtime story app where your child becomes the hero. You create their character, choose a magical world and a story helper, and Simbi creates a fresh bedtime story for them each night.",
 	},
 	{
 		q: "How does personalisation work?",
-		a: "You design your child's character — choosing their hair, eyes, skin tone, and pyjamas. Then you pick a story world and a helper companion. Every story weaves these choices together so the adventure truly feels like theirs.",
+		a: "You create your child's character by choosing features like hair, eyes, skin tone, and pyjamas. You can then pick a story world and a helper companion. Simbi uses these choices to create stories that feel personal to your child.",
 	},
 	{
 		q: "What age is Simbi designed for?",
-		a: "Simbi is designed for children aged 2–12. Stories adapt to your child's age, so younger children get simpler, gentler tales while older children enjoy more detailed adventures.",
+		a: "Simbi is designed for children aged 2–10. Stories are shaped around your child's age, so younger children get simpler, gentler bedtime stories, while older children can enjoy richer adventures.",
 	},
 	{
-		q: "Do I need to create the stories myself?",
-		a: "No. Once you've set up your child's character and preferences, Simbi handles the rest. A brand new story is ready every night — no prep needed from you.",
+		q: "Do I need to write the stories myself?",
+		a: "No. Once your child's profile is set up, Simbi creates the stories for you. There is no story writing or prep needed from you.",
+	},
+	{
+		q: "How often do children get a story?",
+		a: "Each child on your account can enjoy 1 story per night.",
+	},
+	{
+		q: "Can I add more than one child?",
+		a: "Yes. Simbi is designed for families, so you can add multiple children to the same family account.",
+	},
+	{
+		q: "Can family members use Simbi on multiple devices?",
+		a: "Yes. Your family account can be used across multiple devices. You can generate a join code inside the app so other family members or devices can join the same family account.",
 	},
 	{
 		q: "Is Simbi available on iPhone and iPad?",
 		a: "Yes. Simbi is available on the App Store for both iPhone and iPad.",
 	},
 	{
-		q: "Does Simbi require a subscription?",
-		a: "Simbi offers a free tier so you can try it out. For the full experience — including unlimited stories and access to all worlds — there are affordable subscription options.",
+		q: "Can I try Simbi before subscribing?",
+		a: "Yes. Each new family gets the first day free, so you can try Simbi and create bedtime stories before deciding whether to subscribe.",
 	},
 	{
-		q: "Can I try it before subscribing?",
-		a: "Absolutely. Download Simbi and start creating your child's bedtime world straight away. Try it, see the magic, and upgrade when you're ready.",
+		q: "Does Simbi require a subscription?",
+		a: "A subscription is required to continue creating new stories after the free first day. Subscription options are shown clearly in the app.",
+	},
+	{
+		q: "Does Simbi include audio narration?",
+		a: "Yes. All plans include audio narration, so you can either read the story together or listen at bedtime.",
+	},
+	{
+		q: "Can siblings have their own stories?",
+		a: "Yes. Each child on the account can have their own personalised story experience, based on their profile and choices.",
+	},
+	{
+		q: "Are the stories the same every night?",
+		a: "No. Simbi creates a new story each night, so bedtime stays fresh, magical, and personal.",
+	},
+	{
+		q: "What makes Simbi different from regular bedtime story apps?",
+		a: "Simbi is built around your child. Instead of choosing from a fixed library of stories, your child becomes the hero of a new personalised adventure each night.",
+	},
+	{
+		q: "Is Simbi designed for parents and families?",
+		a: "Yes. Simbi is made for family bedtime routines, with child-friendly storytelling and simple setup for parents or guardians.",
 	},
 ];
 
@@ -49,6 +81,17 @@ const themes = [
 	{ name: "Space Explorers", img: "/images/themes/space.png" },
 	{ name: "Pirates", img: "/images/themes/pirates.png" },
 ];
+
+const appScreenshots = [
+	{ src: "/images/screenshots/preview-1.png", alt: "Simbi: Bedtime Stories — app screenshot 1" },
+	{ src: "/images/screenshots/preview-2.png", alt: "Simbi: Bedtime Stories — app screenshot 2" },
+	{ src: "/images/screenshots/preview-3.png", alt: "Simbi: Bedtime Stories — app screenshot 3" },
+	{ src: "/images/screenshots/preview-4.png", alt: "Simbi: Bedtime Stories — app screenshot 4" },
+	{ src: "/images/screenshots/preview-5.png", alt: "Simbi: Bedtime Stories — app screenshot 5" },
+	{ src: "/images/screenshots/preview-6.png", alt: "Simbi: Bedtime Stories — app screenshot 6" },
+	{ src: "/images/screenshots/preview-7.png", alt: "Simbi: Bedtime Stories — app screenshot 7" },
+	{ src: "/images/screenshots/preview-8.png", alt: "Simbi: Bedtime Stories — app screenshot 8" },
+];
 ---
 
 <Layout title="Simbi — Bedtime Stories Where Your Child is the Hero">
@@ -67,7 +110,7 @@ const themes = [
 			</div>
 			<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-white/[0.08] hover:bg-white/[0.14] border border-white/[0.08] text-white/90 hover:text-white font-display font-semibold text-[0.8125rem] px-5 py-2 rounded-full transition-all duration-200 backdrop-blur-sm">
 				<svg class="w-[14px] h-[14px]" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-				Download Free
+				Download Simbi
 			</a>
 			<button id="mobile-menu-btn" class="md:hidden p-2 text-white/65 hover:text-white transition-colors" aria-label="Menu">
 				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -82,7 +125,7 @@ const themes = [
 			<div class="pt-3">
 				<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-golden text-navy-950 font-display font-semibold text-sm px-5 py-2.5 rounded-full">
 					<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-					Download Free
+					Download Simbi
 				</a>
 			</div>
 		</div>
@@ -90,7 +133,7 @@ const themes = [
 </nav>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
-<section id="hero" class="relative z-20 min-h-[90vh] sm:min-h-screen flex items-center overflow-hidden pt-20 pb-12">
+<section id="hero" class="relative z-20 min-h-[90vh] sm:min-h-screen flex items-start sm:items-center overflow-hidden pt-20 pb-12">
 	<div id="hero-bg-parallax" class="hero-bg-parallax absolute inset-0 overflow-hidden">
 		<img src="/images/main-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover object-top sm:hidden" />
 		<img src="/images/newer-bg-image.jpg" alt="" class="absolute inset-0 w-full h-full object-cover object-[center_35%] hidden sm:block" />
@@ -106,10 +149,20 @@ const themes = [
 	<div class="pointer-events-none absolute inset-0 z-[1] lg:hidden bg-[radial-gradient(ellipse_100%_80%_at_50%_38%,rgba(7,13,26,0.28)_0%,rgba(7,13,26,0.1)_55%,transparent_78%)]" aria-hidden="true"></div>
 
 	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-		<div class="max-w-xl sm:max-w-2xl lg:max-w-[42rem] text-center lg:text-left mx-auto lg:mx-0">
-			<div class="relative rounded-2xl sm:rounded-[1.6rem] border-l border-t border-b border-white/[0.05] border-r-0 shadow-[0_4px_36px_-12px_rgba(0,0,0,0.3)] px-5 py-7 sm:px-7 sm:py-8 lg:px-8 lg:py-9">
-				<div class="hero-glass-blur hero-glass-fade-right pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[inherit]" aria-hidden="true"></div>
-				<div class="hero-glass-tint hero-glass-fade-right pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[inherit]" aria-hidden="true"></div>
+		<!-- Mobile: full-bleed art above copy; z-20 so it paints over the headline area when overlapped -->
+		<div class="sm:hidden relative z-20 left-1/2 -translate-x-1/2 w-screen max-w-[100vw] -mt-1 overflow-x-hidden pointer-events-none">
+			<img
+				src="/images/welcome-img6.png"
+				alt=""
+				class="relative z-20 block h-auto w-full max-w-none align-bottom drop-shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
+				loading="eager"
+				decoding="async"
+			/>
+		</div>
+		<div class="relative z-10 -mt-24 max-w-xl sm:max-w-2xl lg:max-w-[42rem] text-center lg:text-left mx-auto lg:mx-0 sm:mt-0">
+			<div class="relative rounded-2xl sm:rounded-[1.6rem] border-0 sm:border-l sm:border-t sm:border-b sm:border-white/[0.05] border-r-0 shadow-none sm:shadow-[0_4px_36px_-12px_rgba(0,0,0,0.3)] px-5 py-7 sm:px-7 sm:py-8 lg:px-8 lg:py-9">
+				<div class="hero-glass-blur hero-glass-fade-right pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[inherit] hidden sm:block" aria-hidden="true"></div>
+				<div class="hero-glass-tint hero-glass-fade-right pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[inherit] hidden sm:block" aria-hidden="true"></div>
 				<div class="relative z-10">
 					<div class="space-y-4 sm:space-y-5 mb-7 sm:mb-8">
 						<p class="animate-fade-in-up font-body text-base sm:text-lg lg:text-xl font-medium text-white/85 tracking-[0.02em] flex justify-center lg:justify-start lg:border-l-2 lg:border-golden/45 lg:pl-4">
@@ -127,9 +180,9 @@ const themes = [
 					</div>
 
 					<div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 justify-center lg:justify-start animate-fade-in-up animation-delay-600">
-						<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-golden hover:bg-golden-dark text-navy-950 font-display font-bold text-base sm:text-lg px-7 py-3.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(245,166,35,0.3)]">
+						<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="group inline-flex w-full sm:w-auto items-center justify-center gap-3 bg-golden hover:bg-golden-dark text-navy-950 font-display font-bold text-base sm:text-lg px-7 py-3.5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(245,166,35,0.3)]">
 							<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-							Download Free
+							Download Simbi
 						</a>
 						<a href="#how-it-works" class="flex items-center gap-2 text-white/65 hover:text-white font-display font-medium text-[0.9rem] transition-colors group">
 							See how it works
@@ -155,10 +208,59 @@ const themes = [
 
 <div class="relative z-[2] bg-navy-950/80">
 
+<!-- ═══════════════════ APP SCREENSHOTS (App Store strip) ═══════════════════ -->
+<section id="app" class="relative pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pb-28 overflow-hidden" aria-labelledby="app-screenshots-heading">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="mb-10 sm:mb-12" data-reveal>
+			<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6">
+				<div class="text-center sm:text-left">
+					<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">The app</p>
+					<h2 id="app-screenshots-heading" class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight">See Simbi on the App Store</h2>
+					<p class="text-white/50 text-sm sm:text-base mt-3 max-w-xl mx-auto sm:mx-0 leading-relaxed">Real screens from the app — the same previews families see when they download.</p>
+				</div>
+				<p class="app-swipe-hint md:hidden flex items-center justify-center gap-2 text-sm text-white/45 font-display shrink-0">
+					<span class="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5">
+						<svg class="w-4 h-4 text-golden/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
+						Swipe for more
+						<svg class="w-4 h-4 text-golden/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+					</span>
+				</p>
+			</div>
+		</div>
+
+		<div class="relative min-w-0">
+			<!-- Edge fades (hint scroll) — aligned to same container as title -->
+			<div class="pointer-events-none absolute inset-y-0 left-0 z-10 hidden sm:block w-5 bg-gradient-to-r from-[rgb(7,13,26)] to-transparent md:w-8" aria-hidden="true"></div>
+			<div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 sm:w-12 bg-gradient-to-l from-[rgb(7,13,26)] to-transparent" aria-hidden="true"></div>
+
+			<div
+				class="app-screenshots-scroll w-full flex gap-3 sm:gap-4 md:gap-5 lg:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth pb-2 min-w-0"
+				role="region"
+				aria-label="App screenshot gallery. Swipe horizontally on a phone or tablet."
+			>
+				{appScreenshots.map((shot, i) => (
+					<div class="flex-none snap-center app-screenshot-card">
+						<div class="relative rounded-[1.35rem] sm:rounded-[1.5rem] overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.12] bg-navy-900/40">
+							<img
+								src={shot.src}
+								alt={shot.alt}
+								class="w-full h-auto block align-bottom select-none"
+								loading={i < 3 ? "eager" : "lazy"}
+								decoding="async"
+								draggable="false"
+							/>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
 <!-- ═══════════════════ HOW IT WORKS ═══════════════════ -->
-<section id="how-it-works" class="relative py-20 sm:py-28">
+<section id="how-it-works" class="relative py-16 sm:py-24 lg:py-28">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-14 sm:mb-16" data-reveal>
+		<div class="text-center mb-12 sm:mb-16" data-reveal>
 			<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">How it works</p>
 			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">Bedtime in four simple steps</h2>
 		</div>
@@ -188,67 +290,21 @@ const themes = [
 	</div>
 </section>
 
-<!-- ═══════════════════ APP SHOWCASE ═══════════════════ -->
-<section id="app" class="relative py-20 sm:py-28 overflow-hidden">
-	<div class="absolute inset-0 bg-gradient-to-b from-transparent via-navy-800/25 to-transparent"></div>
-	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-14 sm:mb-16" data-reveal>
-			<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Inside the app</p>
-			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-4">See the Magic for Yourself</h2>
-			<p class="text-white/55 text-lg max-w-xl mx-auto">From building their character to reading tonight's story — this is what bedtime looks like with Simbi.</p>
-		</div>
-
-		<div class="relative" data-reveal="100ms">
-			<div class="flex gap-4 sm:gap-5 lg:gap-6 justify-center items-end overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar px-4 sm:px-0">
-				<div class="snap-center shrink-0 w-[200px] sm:w-[220px] lg:w-[240px]">
-					<div class="relative rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-950/50 ring-1 ring-white/10 mb-3">
-						<img src="/images/screenshots/welcome.png" alt="Welcome screen" class="w-full" loading="lazy" />
-					</div>
-					<p class="font-display font-semibold text-xs sm:text-sm text-white/50 text-center">Welcome</p>
-				</div>
-				<div class="snap-center shrink-0 w-[200px] sm:w-[220px] lg:w-[240px] -translate-y-4">
-					<div class="relative rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-950/50 ring-1 ring-white/10 mb-3">
-						<img src="/images/screenshots/character.png" alt="Character creation" class="w-full" loading="lazy" />
-					</div>
-					<p class="font-display font-semibold text-xs sm:text-sm text-white/50 text-center">Build their character</p>
-				</div>
-				<div class="snap-center shrink-0 w-[220px] sm:w-[250px] lg:w-[280px] z-10">
-					<div class="relative rounded-[1.8rem] sm:rounded-[2.2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] ring-2 ring-golden/20 mb-3">
-						<img src="/images/screenshots/home.png" alt="Tonight's story" class="w-full" loading="lazy" />
-					</div>
-					<p class="font-display font-bold text-sm text-golden text-center">Tonight's adventure</p>
-				</div>
-				<div class="snap-center shrink-0 w-[200px] sm:w-[220px] lg:w-[240px] -translate-y-4">
-					<div class="relative rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-950/50 ring-1 ring-white/10 mb-3">
-						<img src="/images/screenshots/theme.png" alt="Theme selection" class="w-full" loading="lazy" />
-					</div>
-					<p class="font-display font-semibold text-xs sm:text-sm text-white/50 text-center">Choose a world</p>
-				</div>
-				<div class="snap-center shrink-0 w-[200px] sm:w-[220px] lg:w-[240px]">
-					<div class="relative rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-navy-950/50 ring-1 ring-white/10 mb-3">
-						<img src="/images/screenshots/story.png" alt="Story reading" class="w-full" loading="lazy" />
-					</div>
-					<p class="font-display font-semibold text-xs sm:text-sm text-white/50 text-center">Story time</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
 <!-- ═══════════════════ THEIR WORLD ═══════════════════ -->
-<section class="relative py-20 sm:py-28">
+<section class="relative py-16 sm:py-24 lg:py-28">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-		<!-- Worlds -->
-		<div class="mb-24 sm:mb-32">
+		<!-- Worlds (bottom margin matches section-to-section rhythm: ~ pt+pb of adjacent py-16/24/28 sections) -->
+		<div class="mb-32 sm:mb-48 lg:mb-56">
 			<div class="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-center">
-				<div class="lg:col-span-4 mb-10 lg:mb-0" data-reveal>
+				<div class="lg:col-span-4 mb-8 sm:mb-10 lg:mb-0 text-center lg:text-left" data-reveal>
 					<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Story worlds</p>
 					<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[2.5rem] leading-tight mb-4">Where Will Tonight's Adventure Take Them?</h2>
-					<p class="text-white/55 leading-relaxed">Your child picks the world — and every story is set inside it. Enchanted forests, pirate islands, the depths of the ocean. Each one illustrated with rich, immersive artwork.</p>
+					<p class="text-white/55 leading-relaxed max-w-xl mx-auto lg:mx-0">Your child picks the world — and every story is set inside it. Enchanted forests, pirate islands, the depths of the ocean. Each one illustrated with rich, immersive artwork.</p>
+					<p class="text-white/40 text-sm mt-4 leading-relaxed max-w-xl mx-auto lg:mx-0">These are only some of the worlds — more are available in the app.</p>
 				</div>
 				<div class="lg:col-span-8" data-reveal="100ms">
-					<div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4">
+					<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
 						{themes.map((theme) => (
 							<div class="group cursor-default">
 								<div class="relative aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden ring-1 ring-white/10 group-hover:ring-golden/30 transition-all duration-300">
@@ -263,10 +319,16 @@ const themes = [
 			</div>
 		</div>
 
-		<!-- Helpers -->
+		<!-- Helpers (copy first in DOM so it stacks above images on mobile; lg:order restores image-left / text-right) -->
 		<div>
 			<div class="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-center">
-				<div class="lg:col-span-8 lg:order-1 order-2" data-reveal="100ms">
+				<div class="lg:col-span-4 lg:order-2 mb-8 sm:mb-10 lg:mb-0 text-center lg:text-left" data-reveal>
+					<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Companion characters</p>
+					<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[2.5rem] leading-tight mb-4">Every Hero Needs a Friend</h2>
+					<p class="text-white/55 leading-relaxed max-w-xl mx-auto lg:mx-0">Your child picks a companion who joins them on every adventure. Each helper has its own personality — and becomes a familiar, comforting presence in the story.</p>
+					<p class="text-white/40 text-sm mt-4 leading-relaxed max-w-xl mx-auto lg:mx-0">These companions are just a sample — additional helpers are available in the app.</p>
+				</div>
+				<div class="lg:col-span-8 lg:order-1" data-reveal="100ms">
 					<div class="grid grid-cols-3 sm:grid-cols-6 gap-6 sm:gap-8">
 						{helpers.map((helper) => (
 							<div class="group text-center">
@@ -280,11 +342,6 @@ const themes = [
 						))}
 					</div>
 				</div>
-				<div class="lg:col-span-4 lg:order-2 order-1 mb-10 lg:mb-0" data-reveal>
-					<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Companion characters</p>
-					<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[2.5rem] leading-tight mb-4">Every Hero Needs a Friend</h2>
-					<p class="text-white/55 leading-relaxed">Your child picks a companion who joins them on every adventure. Each helper has its own personality — and becomes a familiar, comforting presence in the story.</p>
-				</div>
 			</div>
 		</div>
 
@@ -292,12 +349,12 @@ const themes = [
 </section>
 
 <!-- ═══════════════════ WHY SIMBI ═══════════════════ -->
-<section class="relative py-20 sm:py-28">
+<section class="relative py-16 sm:py-24 lg:py-28">
 	<div class="absolute inset-0 bg-gradient-to-b from-transparent via-navy-800/20 to-transparent"></div>
 	<div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-14 sm:mb-16" data-reveal>
+		<div class="text-center mb-12 sm:mb-16" data-reveal>
 			<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Why families love it</p>
-			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">Bedtime, Reimagined</h2>
+			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">Bedtime, reimagined</h2>
 		</div>
 
 		<div class="grid sm:grid-cols-2 gap-5" data-reveal="80ms">
@@ -306,8 +363,8 @@ const themes = [
 					<svg class="w-5 h-5 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
 				</div>
 				<div>
-					<h3 class="font-display font-bold text-lg mb-1">They're the hero, not just the audience</h3>
-					<p class="text-white/50 text-sm leading-relaxed">Your child doesn't just hear a story — they're in it. Their character, their world, their companion. It feels like theirs because it is.</p>
+					<h3 class="font-display font-bold text-lg mb-2">They're the hero, not just the audience</h3>
+					<p class="text-white/50 text-sm leading-relaxed">Your child doesn't just listen to a story — they're part of it. Their character, their magical world, their story helper. Every bedtime adventure feels personal because it is.</p>
 				</div>
 			</div>
 
@@ -316,8 +373,8 @@ const themes = [
 					<svg class="w-5 h-5 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
 				</div>
 				<div>
-					<h3 class="font-display font-bold text-lg mb-1">Bedtime becomes something they want</h3>
-					<p class="text-white/50 text-sm leading-relaxed">Instead of negotiations, there's anticipation. Children look forward to bedtime when a new adventure is waiting for them.</p>
+					<h3 class="font-display font-bold text-lg mb-2">Bedtime becomes something they look forward to</h3>
+					<p class="text-white/50 text-sm leading-relaxed">A new story each night gives children something special to settle into. Instead of the usual bedtime resistance, there's excitement to see what tonight's adventure will be.</p>
 				</div>
 			</div>
 
@@ -326,8 +383,8 @@ const themes = [
 					<svg class="w-5 h-5 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
 				</div>
 				<div>
-					<h3 class="font-display font-bold text-lg mb-1">A fresh story every single night</h3>
-					<p class="text-white/50 text-sm leading-relaxed">No repeats, no re-reads. Simbi creates a brand new personalised adventure every evening, so the wonder never gets old.</p>
+					<h3 class="font-display font-bold text-lg mb-2">A fresh story every single night</h3>
+					<p class="text-white/50 text-sm leading-relaxed">Simbi creates a new personalised story for each child, every night. No fixed library, no same old re-reads — just a bedtime experience that stays fresh, magical, and personal.</p>
 				</div>
 			</div>
 
@@ -336,8 +393,8 @@ const themes = [
 					<svg class="w-5 h-5 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
 				</div>
 				<div>
-					<h3 class="font-display font-bold text-lg mb-1">Zero effort for parents</h3>
-					<p class="text-white/50 text-sm leading-relaxed">Set it up once. After that, a new story is ready every night — no prep, no planning, no running out of ideas at 7pm.</p>
+					<h3 class="font-display font-bold text-lg mb-2">Easy for parents, magical for children</h3>
+					<p class="text-white/50 text-sm leading-relaxed">Set up your family once, add your children, and Simbi takes care of the rest. No writing, no planning, no scrambling for bedtime ideas at the end of the day.</p>
 				</div>
 			</div>
 		</div>
@@ -345,11 +402,11 @@ const themes = [
 </section>
 
 <!-- ═══════════════════ FAQ ═══════════════════ -->
-<section id="faq" class="relative py-20 sm:py-28">
+<section id="faq" class="relative py-16 sm:py-24 lg:py-28">
 	<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-14" data-reveal>
-			<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">Questions</p>
-			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">Frequently Asked</h2>
+		<div class="text-center mb-12 sm:mb-16" data-reveal>
+			<p class="text-golden font-display font-semibold text-sm tracking-widest uppercase mb-3">FAQs</p>
+			<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl">Questions and answers</h2>
 		</div>
 
 		<div class="space-y-3" data-reveal="80ms">
@@ -369,16 +426,16 @@ const themes = [
 </section>
 
 <!-- ═══════════════════ TRUST / PRIVACY ═══════════════════ -->
-<section class="relative py-20 sm:py-28">
+<section class="relative py-16 sm:py-24 lg:py-28">
 	<div class="absolute inset-0 bg-gradient-to-b from-transparent via-navy-800/15 to-transparent"></div>
 	<div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="bg-white/[0.04] border border-white/[0.07] rounded-3xl p-8 sm:p-12 text-center" data-reveal>
+		<div class="bg-white/[0.04] border border-white/[0.07] rounded-3xl p-7 sm:p-10 lg:p-12 text-center" data-reveal>
 			<div class="w-14 h-14 rounded-2xl bg-golden/15 flex items-center justify-center mx-auto mb-6">
 				<svg class="w-7 h-7 text-golden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
 			</div>
 			<h2 class="font-display font-bold text-2xl sm:text-3xl mb-4">A Safe Place for Bedtime Stories</h2>
 			<p class="text-white/55 leading-relaxed max-w-xl mx-auto mb-8">
-				Simbi is a children's app, and we treat that responsibility seriously. There are no ads, no in-app purchases inside the experience, and no social features. Stories are designed to be gentle, age-appropriate, and calming.
+				Simbi is designed for children and families, with a calm, thoughtful experience that keeps bedtime simple. No ads, no social features, and stories created to feel gentle, age-appropriate, and comforting at the end of the day.
 			</p>
 			<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/45">
 				<div class="flex items-center gap-2">
@@ -391,11 +448,11 @@ const themes = [
 				</div>
 				<div class="flex items-center gap-2">
 					<svg class="w-4 h-4 text-golden/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-					Age-appropriate content
+					Gentle, age-appropriate stories
 				</div>
 				<div class="flex items-center gap-2">
 					<svg class="w-4 h-4 text-golden/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-					Designed for calm
+					Made for calm bedtime moments
 				</div>
 			</div>
 		</div>
@@ -403,7 +460,7 @@ const themes = [
 </section>
 
 <!-- ═══════════════════ FINAL CTA ═══════════════════ -->
-<section class="relative py-24 sm:py-32 overflow-hidden">
+<section class="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
 	<div class="absolute inset-0">
 		<img src="/images/main-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25 sm:hidden" />
 		<img src="/images/desktop-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25 hidden sm:block" />
@@ -412,16 +469,17 @@ const themes = [
 	<div class="stars-container absolute inset-0 pointer-events-none opacity-60"></div>
 
 	<div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-reveal>
-		<img src="/images/hero-art.png" alt="" class="w-28 sm:w-36 mx-auto mb-8 drop-shadow-xl hero-float" />
+		<img src="/images/hero-art.png" alt="" class="w-24 sm:w-32 lg:w-36 mx-auto mb-6 sm:mb-8 drop-shadow-xl hero-float" />
 
-		<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-4">Their Story Starts Tonight</h2>
-		<p class="text-white/60 text-lg sm:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
+		<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4">Their Story Starts Tonight</h2>
+		<p class="text-white/60 text-base sm:text-lg lg:text-xl max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed">
 			Create their character. Choose their world. Meet their companion. A magical bedtime adventure is waiting.
 		</p>
 
-		<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-golden hover:bg-golden-dark text-navy-950 font-display font-bold text-lg px-10 py-5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(245,166,35,0.25)]">
-			<svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-			Download Free on the App Store
+		<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto items-center justify-center gap-3 bg-golden hover:bg-golden-dark text-navy-950 font-display font-bold text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(245,166,35,0.25)]">
+			<svg class="w-5 h-5 sm:w-6 sm:h-6 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+			<span class="sm:hidden">Download on the App Store</span>
+			<span class="hidden sm:inline">Download Simbi on the App Store</span>
 		</a>
 		<p class="text-white/35 text-sm mt-4">Available on iPhone and iPad</p>
 	</div>
@@ -447,7 +505,7 @@ const themes = [
 		</div>
 
 		<div class="mt-8 pt-8 border-t border-white/5 text-center">
-			<p class="text-sm text-white/25">&copy; {new Date().getFullYear()} Simbi. All rights reserved.</p>
+			<p class="text-sm text-white/25">&copy; 2026 Matthew Smart. All rights reserved.</p>
 		</div>
 	</div>
 </footer>
@@ -594,6 +652,76 @@ const themes = [
 	}
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
+	}
+
+	/* App Store–style strip; card width is share of the scroll container (matches title column width) */
+	.app-screenshots-scroll {
+		/* Matches Tailwind gap-* on the flex row; used so ~3 cards fit the container width */
+		--app-shot-gap: 0.75rem;
+	}
+
+	.app-screenshot-card {
+		width: calc((100% - 2 * var(--app-shot-gap)) / 3.12);
+		max-width: 300px;
+	}
+
+	@media (min-width: 640px) {
+		.app-screenshots-scroll {
+			--app-shot-gap: 1rem;
+		}
+
+		.app-screenshot-card {
+			width: 200px;
+			max-width: none;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.app-screenshots-scroll {
+			--app-shot-gap: 1.25rem;
+		}
+
+		.app-screenshot-card {
+			width: 220px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.app-screenshots-scroll {
+			--app-shot-gap: 1.5rem;
+		}
+
+		.app-screenshot-card {
+			width: 240px;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.app-screenshot-card {
+			width: 260px;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.app-swipe-hint {
+			animation: app-swipe-hint-glow 2.8s ease-in-out infinite;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.app-swipe-hint {
+			animation: none;
+		}
+	}
+
+	@keyframes app-swipe-hint-glow {
+		0%,
+		100% {
+			opacity: 0.75;
+		}
+		50% {
+			opacity: 1;
+		}
 	}
 
 	.hero-bg-parallax {
