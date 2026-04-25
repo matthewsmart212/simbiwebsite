@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
 
+const fontsHref =
+	"https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Quicksand:wght@400;500;600;700&display=swap";
+
 interface Props {
 	title: string;
 	description?: string;
@@ -16,6 +19,8 @@ const { title, description = "Simbi: Bedtime Stories — Personalised adventures
 		<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
+
+		<slot name="head" />
 
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3812HJV0G"></script>
@@ -40,7 +45,16 @@ const { title, description = "Simbi: Bedtime Stories — Personalised adventures
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<!-- Non–render-blocking: apply after load so Google Fonts don’t block first paint (same fonts as before). -->
+		<link
+			rel="stylesheet"
+			href={fontsHref}
+			media="print"
+			onload="this.media='all'"
+		/>
+		<noscript>
+			<link rel="stylesheet" href={fontsHref} />
+		</noscript>
 
 		<title>{title}</title>
 	</head>

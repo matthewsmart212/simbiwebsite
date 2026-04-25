@@ -1,5 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image, getImage } from "astro:assets";
+import logoPng from "../assets/images/logo.png";
+import mainBgPng from "../assets/images/main-bg.png";
+import newerBgJpg from "../assets/images/newer-bg-image.jpg";
+import welcomePng from "../assets/images/welcome-img6.png";
+import secondBgPng from "../assets/images/second-bg.png";
+import desktopBgPng from "../assets/images/desktop-bg.png";
+import heroArtPng from "../assets/images/hero-art.png";
+import hPuppy from "../assets/images/helpers/puppy.png";
+import hKitty from "../assets/images/helpers/kitty.png";
+import hOwl from "../assets/images/helpers/owl.png";
+import hDolphin from "../assets/images/helpers/dolphin.png";
+import hFairy from "../assets/images/helpers/fairy.png";
+import hDragon from "../assets/images/helpers/dragon.png";
+import tFairyTales from "../assets/images/themes/fairy-tales.png";
+import tDragons from "../assets/images/themes/dragons.png";
+import tOcean from "../assets/images/themes/ocean.png";
+import tDinosaurs from "../assets/images/themes/dinosaurs.png";
+import tSpace from "../assets/images/themes/space.png";
+import tPirates from "../assets/images/themes/pirates.png";
+import s1 from "../assets/images/screenshots/preview-1.jpg";
+import s2 from "../assets/images/screenshots/preview-2.jpg";
+import s3 from "../assets/images/screenshots/preview-3.jpg";
+import s4 from "../assets/images/screenshots/preview-4.jpg";
+import s5 from "../assets/images/screenshots/preview-5.jpg";
+import s6 from "../assets/images/screenshots/preview-6.jpg";
+import s7 from "../assets/images/screenshots/preview-7.jpg";
+import s8 from "../assets/images/screenshots/preview-8.jpg";
 
 const faqs = [
 	{
@@ -64,44 +92,53 @@ const faqs = [
 	},
 ];
 
+const welcomeLcpPreload = await getImage({ src: welcomePng, width: 1200, format: "webp", quality: 84 });
+
 const helpers = [
-	{ name: "Biscuit", img: "/images/helpers/puppy.png", trait: "Loyal & playful" },
-	{ name: "Whiskers", img: "/images/helpers/kitty.png", trait: "Curious & gentle" },
-	{ name: "Hoot", img: "/images/helpers/owl.png", trait: "Wise & calm" },
-	{ name: "Splash", img: "/images/helpers/dolphin.png", trait: "Brave & kind" },
-	{ name: "Twinkle", img: "/images/helpers/fairy.png", trait: "Magical & caring" },
-	{ name: "Ember", img: "/images/helpers/dragon.png", trait: "Friendly & fearless" },
+	{ name: "Biscuit", img: hPuppy, trait: "Loyal & playful" },
+	{ name: "Whiskers", img: hKitty, trait: "Curious & gentle" },
+	{ name: "Hoot", img: hOwl, trait: "Wise & calm" },
+	{ name: "Splash", img: hDolphin, trait: "Brave & kind" },
+	{ name: "Twinkle", img: hFairy, trait: "Magical & caring" },
+	{ name: "Ember", img: hDragon, trait: "Friendly & fearless" },
 ];
 
 const themes = [
-	{ name: "Fairy Tales", img: "/images/themes/fairy-tales.png" },
-	{ name: "Friendly Dragons", img: "/images/themes/dragons.png" },
-	{ name: "Ocean Adventures", img: "/images/themes/ocean.png" },
-	{ name: "Dinosaurs", img: "/images/themes/dinosaurs.png" },
-	{ name: "Space Explorers", img: "/images/themes/space.png" },
-	{ name: "Pirates", img: "/images/themes/pirates.png" },
+	{ name: "Fairy Tales", img: tFairyTales },
+	{ name: "Friendly Dragons", img: tDragons },
+	{ name: "Ocean Adventures", img: tOcean },
+	{ name: "Dinosaurs", img: tDinosaurs },
+	{ name: "Space Explorers", img: tSpace },
+	{ name: "Pirates", img: tPirates },
 ];
 
 const appScreenshots = [
-	{ src: "/images/screenshots/preview-1.jpg", alt: "Simbi: Bedtime Stories — app screenshot 1" },
-	{ src: "/images/screenshots/preview-2.jpg", alt: "Simbi: Bedtime Stories — app screenshot 2" },
-	{ src: "/images/screenshots/preview-3.jpg", alt: "Simbi: Bedtime Stories — app screenshot 3" },
-	{ src: "/images/screenshots/preview-4.jpg", alt: "Simbi: Bedtime Stories — app screenshot 4" },
-	{ src: "/images/screenshots/preview-5.jpg", alt: "Simbi: Bedtime Stories — app screenshot 5" },
-	{ src: "/images/screenshots/preview-6.jpg", alt: "Simbi: Bedtime Stories — app screenshot 6" },
-	{ src: "/images/screenshots/preview-7.jpg", alt: "Simbi: Bedtime Stories — app screenshot 7" },
-	{ src: "/images/screenshots/preview-8.jpg", alt: "Simbi: Bedtime Stories — app screenshot 8" },
+	{ src: s1, alt: "Simbi: Bedtime Stories — app screenshot 1" },
+	{ src: s2, alt: "Simbi: Bedtime Stories — app screenshot 2" },
+	{ src: s3, alt: "Simbi: Bedtime Stories — app screenshot 3" },
+	{ src: s4, alt: "Simbi: Bedtime Stories — app screenshot 4" },
+	{ src: s5, alt: "Simbi: Bedtime Stories — app screenshot 5" },
+	{ src: s6, alt: "Simbi: Bedtime Stories — app screenshot 6" },
+	{ src: s7, alt: "Simbi: Bedtime Stories — app screenshot 7" },
+	{ src: s8, alt: "Simbi: Bedtime Stories — app screenshot 8" },
 ];
 ---
 
 <Layout title="Simbi — Bedtime Stories Where Your Child is the Hero">
+	<link
+		slot="head"
+		rel="preload"
+		as="image"
+		href={welcomeLcpPreload.src}
+		type="image/webp"
+	/>
 
 <!-- ═══════════════════ NAV ═══════════════════ -->
 <nav id="navbar" class="nav-bar fixed top-0 left-0 right-0 z-50 transition-[background,backdrop-filter,box-shadow] duration-500 ease-out">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex items-center justify-between h-16 sm:h-[4.5rem]">
 			<a href="#" class="flex items-center gap-2">
-				<img src="/images/logo.png" alt="Simbi" class="h-8 sm:h-9" />
+				<Image src={logoPng} alt="Simbi" class="h-8 sm:h-9 w-auto" width={logoPng.width} height={logoPng.height} />
 			</a>
 			<div class="hidden md:flex items-center gap-10">
 				<a href="#how-it-works" class="text-[0.8125rem] font-display font-medium text-white/65 hover:text-white transition-colors duration-200 tracking-wide">How It Works</a>
@@ -135,8 +172,22 @@ const appScreenshots = [
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section id="hero" class="relative z-20 min-h-[90vh] sm:min-h-screen flex items-start sm:items-center overflow-hidden pt-20 pb-12">
 	<div id="hero-bg-parallax" class="hero-bg-parallax absolute inset-0 overflow-hidden">
-		<img src="/images/main-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover object-top sm:hidden" />
-		<img src="/images/newer-bg-image.jpg" alt="" class="absolute inset-0 w-full h-full object-cover object-[center_35%] hidden sm:block" />
+		<Image
+			src={mainBgPng}
+			alt=""
+			class="absolute inset-0 w-full h-full object-cover object-top sm:hidden"
+			sizes="100vw"
+			widths={[640, 750, 828, 1024, 1200, 1500, 2000]}
+			quality="high"
+		/>
+		<Image
+			src={newerBgJpg}
+			alt=""
+			class="absolute inset-0 w-full h-full object-cover object-[center_35%] hidden sm:block"
+			sizes="100vw"
+			widths={[1024, 1280, 1600, 1920, 2200, 2560]}
+			quality="high"
+		/>
 		<div class="absolute inset-0 bg-gradient-to-b from-navy-950/20 via-navy-950/5 to-navy-950 lg:from-navy-950/10 lg:via-transparent lg:to-navy-950"></div>
 	</div>
 
@@ -151,12 +202,15 @@ const appScreenshots = [
 	<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 		<!-- Mobile: full-bleed art above copy; z-20 so it paints over the headline area when overlapped -->
 		<div class="sm:hidden relative z-20 left-1/2 -translate-x-1/2 w-screen max-w-[100vw] -mt-1 overflow-x-hidden pointer-events-none">
-			<img
-				src="/images/welcome-img6.png"
+			<Image
+				src={welcomePng}
 				alt=""
 				class="relative z-20 block h-auto w-full max-w-none align-bottom drop-shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
 				loading="eager"
 				decoding="async"
+				priority
+				sizes="100vw"
+				widths={[400, 600, 828, 1080, 1200, 1500, 2000]}
 			/>
 		</div>
 		<div class="relative z-10 -mt-24 max-w-xl sm:max-w-2xl lg:max-w-[42rem] text-center lg:text-left mx-auto lg:mx-0 sm:mt-0">
@@ -201,7 +255,14 @@ const appScreenshots = [
 <!-- Second site background: fades in after hero, parallax scroll (swap image per section later) -->
 <div id="post-hero-parallax-stack" class="post-hero-parallax-stack fixed inset-0 z-[1] pointer-events-none overflow-hidden" aria-hidden="true">
 	<div id="post-hero-parallax-inner" class="post-hero-parallax-inner">
-		<img src="/images/second-bg.png" alt="" class="h-full w-full object-cover object-center" loading="lazy" />
+		<Image
+			src={secondBgPng}
+			alt=""
+			class="h-full w-full object-cover object-center"
+			sizes="100vw"
+			widths={[640, 1024, 1280, 1600, 2000, 2560]}
+			quality="high"
+		/>
 	</div>
 	<div class="absolute inset-0 bg-gradient-to-b from-navy-950/60 via-navy-900/40 to-navy-950/65"></div>
 </div>
@@ -241,13 +302,16 @@ const appScreenshots = [
 				{appScreenshots.map((shot, i) => (
 					<div class="flex-none snap-center app-screenshot-card">
 						<div class="relative rounded-[1.35rem] sm:rounded-[1.5rem] overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.12] bg-navy-900/40">
-							<img
+							<Image
 								src={shot.src}
 								alt={shot.alt}
 								class="w-full h-auto block align-bottom select-none"
 								loading={i < 3 ? "eager" : "lazy"}
 								decoding="async"
-								draggable="false"
+								draggable={false}
+								sizes="(min-width: 1280px) 260px, (min-width: 1024px) 240px, (min-width: 768px) 220px, (min-width: 640px) 200px, 32vw"
+								widths={[200, 260, 400, 600, 800]}
+								quality="high"
 							/>
 						</div>
 					</div>
@@ -308,7 +372,14 @@ const appScreenshots = [
 						{themes.map((theme) => (
 							<div class="group cursor-default">
 								<div class="relative aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden ring-1 ring-white/10 group-hover:ring-golden/30 transition-all duration-300">
-									<img src={theme.img} alt={theme.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+									<Image
+										src={theme.img}
+										alt={theme.name}
+										class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+										sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
+										widths={[320, 480, 640, 800, 960, 1200]}
+										quality="high"
+									/>
 									<div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent"></div>
 									<p class="absolute bottom-2.5 left-3 right-3 font-display font-semibold text-sm text-white/90 drop-shadow-lg">{theme.name}</p>
 								</div>
@@ -334,7 +405,14 @@ const appScreenshots = [
 							<div class="group text-center">
 								<div class="relative mb-2">
 									<div class="absolute -inset-3 bg-golden/0 group-hover:bg-golden/8 rounded-full blur-xl transition-all duration-500"></div>
-									<img src={helper.img} alt={helper.name} class="relative w-full aspect-square object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-lg" loading="lazy" />
+									<Image
+										src={helper.img}
+										alt={helper.name}
+										class="relative w-full aspect-square object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-lg"
+										sizes="(min-width: 1024px) 10vw, 30vw"
+										widths={[120, 200, 300, 400, 500, 800]}
+										quality="high"
+									/>
 								</div>
 								<p class="font-display font-bold text-sm text-white/80 group-hover:text-golden transition-colors">{helper.name}</p>
 								<p class="text-white/40 text-xs mt-0.5">{helper.trait}</p>
@@ -462,14 +540,34 @@ const appScreenshots = [
 <!-- ═══════════════════ FINAL CTA ═══════════════════ -->
 <section class="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
 	<div class="absolute inset-0">
-		<img src="/images/main-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25 sm:hidden" />
-		<img src="/images/desktop-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25 hidden sm:block" />
+		<Image
+			src={mainBgPng}
+			alt=""
+			class="absolute inset-0 w-full h-full object-cover opacity-25 sm:hidden"
+			sizes="100vw"
+			widths={[640, 750, 828, 1024, 1200, 1500, 2000]}
+			quality="high"
+		/>
+		<Image
+			src={desktopBgPng}
+			alt=""
+			class="absolute inset-0 w-full h-full object-cover opacity-25 hidden sm:block"
+			sizes="100vw"
+			widths={[800, 1024, 1280, 1600, 1920, 2560]}
+			quality="high"
+		/>
 		<div class="absolute inset-0 bg-gradient-to-b from-navy-950 via-navy-950/80 to-navy-950"></div>
 	</div>
 	<div class="stars-container absolute inset-0 pointer-events-none opacity-60"></div>
 
 	<div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-reveal>
-		<img src="/images/hero-art.png" alt="" class="w-24 sm:w-32 lg:w-36 mx-auto mb-6 sm:mb-8 drop-shadow-xl hero-float" />
+		<Image
+			src={heroArtPng}
+			alt=""
+			class="w-24 sm:w-32 lg:w-36 mx-auto mb-6 sm:mb-8 drop-shadow-xl hero-float h-auto"
+			sizes="(min-width: 1024px) 9rem, (min-width: 640px) 8rem, 6rem"
+			widths={[96, 128, 144, 200, 300]}
+		/>
 
 		<h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight mb-4">Their Story Starts Tonight</h2>
 		<p class="text-white/60 text-base sm:text-lg lg:text-xl max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed">
@@ -489,23 +587,23 @@ const appScreenshots = [
 <footer class="relative border-t border-white/[0.07] bg-navy-950/80 backdrop-blur-md py-12 sm:py-14">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-			<img src="/images/logo.png" alt="Simbi" class="h-8" />
+			<Image src={logoPng} alt="Simbi" class="h-8 w-auto" width={logoPng.width} height={logoPng.height} />
 
-			<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/40">
+			<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/55">
 				<a href="/privacy" class="hover:text-white/70 transition-colors">Privacy Policy</a>
 				<a href="/terms" class="hover:text-white/70 transition-colors">Terms of Service</a>
 				<a href="/support" class="hover:text-white/70 transition-colors">Support</a>
 				<a href="/privacy-choices" class="hover:text-white/70 transition-colors">Privacy Choices</a>
 			</div>
 
-			<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors">
+			<a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-white/55 hover:text-white/70 transition-colors">
 				<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
 				App Store
 			</a>
 		</div>
 
 		<div class="mt-8 pt-8 border-t border-white/5 text-center">
-			<p class="text-sm text-white/25">&copy; 2026 Matthew Smart. All rights reserved.</p>
+			<p class="text-sm text-white/40">&copy; 2026 Matthew Smart. All rights reserved.</p>
 		</div>
 	</div>
 </footer>
